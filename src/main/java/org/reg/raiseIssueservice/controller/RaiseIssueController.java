@@ -18,6 +18,11 @@ public class RaiseIssueController {
     {
         return raiseIssueService.getAllIssue();
     }
+    @GetMapping("/getIssue/{id}")
+    public Issue getIssueById(@PathVariable Long id)
+    {
+        return raiseIssueService.getIssueById(id);
+    }
     @PostMapping("/createIssue")
     public Issue createIssue(@RequestBody Issue issue)
     {

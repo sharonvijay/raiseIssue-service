@@ -19,6 +19,11 @@ public class RaiseIssueImpl implements IRaiseIssueService{
     }
 
     @Override
+    public Issue getIssueById(Long id) {
+        return issueRepo.findById(id).orElse(null);
+    }
+
+    @Override
     public Issue raiseIssue(Issue issue) {
         return issueRepo.save(issue);
     }
