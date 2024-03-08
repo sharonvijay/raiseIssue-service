@@ -1,10 +1,13 @@
 package org.reg.raiseIssueservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +27,9 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+//    @OneToOne
+//    private Issue userIssue;
+//    @OneToMany(mappedBy = "raisedBy")
+//    @JsonIgnoreProperties("raisedBy")
+//    private List<Issue> userIssues;
 }
