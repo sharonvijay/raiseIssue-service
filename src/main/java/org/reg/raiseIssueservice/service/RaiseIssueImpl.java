@@ -1,9 +1,12 @@
 package org.reg.raiseIssueservice.service;
 
 import org.reg.raiseIssueservice.entity.Issue;
+import org.reg.raiseIssueservice.entity.User;
 import org.reg.raiseIssueservice.repository.IssueRepo;
+import org.reg.raiseIssueservice.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +15,10 @@ import java.util.Optional;
 public class RaiseIssueImpl implements IRaiseIssueService{
     @Autowired
     private IssueRepo issueRepo;
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private WebClient webClient;
 
     @Override
     public List<Issue> getAllIssue() {
@@ -43,5 +50,16 @@ public class RaiseIssueImpl implements IRaiseIssueService{
         {
             return null;
         }
+    }
+
+    @Override
+    public String showIssueStatus(Long id)
+    {
+
+        return webClient.get().uri("http://localhost:9090/resolveIssue/api/issueStatus/"+id).retrieve().bodyToMono(String.class).block();
+    }
+    @Override
+    public User getUserById(Long id) {
+        return userRepo.findById(id).orElse(null);
     }
 }

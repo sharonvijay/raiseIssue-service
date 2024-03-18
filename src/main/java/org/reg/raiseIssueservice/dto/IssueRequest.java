@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class IssueRequest {
-    private String name;
+    private String issueName;
     private Long userId;
 }

@@ -25,8 +25,6 @@ public class User {
     private Long phoneNo;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private String password;
 //    @OneToOne
 //    private Issue userIssue;
 //    @OneToMany(mappedBy = "raisedBy")
