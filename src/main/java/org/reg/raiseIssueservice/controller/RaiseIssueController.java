@@ -28,7 +28,7 @@ public class RaiseIssueController {
     {
         return raiseIssueService.getIssueById(id);
     }
-    @PostMapping("/raiseIssue")
+    @PostMapping("/createIssue")
     public ResponseEntity<String> raiseIssue(@RequestBody IssueRequest issueRequest) {
         Issue issue = new Issue();
         issue.setName(issueRequest.getIssueName());
