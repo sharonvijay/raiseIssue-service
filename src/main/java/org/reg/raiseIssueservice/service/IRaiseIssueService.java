@@ -6,6 +6,7 @@ import org.reg.raiseIssueservice.entity.User;
 import java.util.List;
 
 public interface IRaiseIssueService {
+    public List<Issue> getAllUserIssue(Long userId);
     public List<Issue> getAllIssue();
     public Issue getIssueById(Long id);
     public Issue raiseIssue(Issue issue);

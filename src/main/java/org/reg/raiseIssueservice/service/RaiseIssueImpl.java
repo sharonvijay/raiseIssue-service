@@ -26,6 +26,17 @@ public class RaiseIssueImpl implements IRaiseIssueService{
     }
 
     @Override
+    public List<Issue> getAllUserIssue(Long userId) {
+        Optional<User> existingUserOptional = userRepo.findById(userId);
+        if(existingUserOptional.isPresent())
+        {
+            User existingUser = existingUserOptional.get();
+            return issueRepo.findByRaisedBy(existingUser);
+        }
+//        return issueRepo.findAll();
+        return null;    }
+
+    @Override
     public Issue getIssueById(Long id) {
         return issueRepo.findById(id).orElse(null);
     }

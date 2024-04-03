@@ -17,11 +17,16 @@ import java.util.Optional;
 public class RaiseIssueController {
     @Autowired
     private IRaiseIssueService raiseIssueService;
-
     @GetMapping("/getAllIssues")
-    public List<Issue> getAllIssues()
-    {
+    public List<Issue> getAllIssues(){
         return raiseIssueService.getAllIssue();
+
+    }
+
+    @GetMapping("/getAllUserIssues/{userId}")
+    public List<Issue> getAllUserIssues(@PathVariable Long userId)
+    {
+        return raiseIssueService.getAllUserIssue(userId);
     }
     @GetMapping("/getIssue/{id}")
     public Issue getIssueById(@PathVariable Long id)
